@@ -1,4 +1,4 @@
-from NetworkDiscoveryCore import *
+from NetworkDiscoveryMenu import *
 
 ## Main
 net_dis = NetworkDiscoveryMenu()
