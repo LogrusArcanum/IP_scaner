@@ -1,7 +1,9 @@
 from NetworkDiscoveryCore import *
 
+
 class NetworkDiscoveryMenu(NetworkDiscoveryCore):
-    def main_menu(self):
+    @staticmethod
+    def main_menu():
         print('''
         1.  Open File
         2.  Network Discovery
@@ -23,5 +25,6 @@ class NetworkDiscoveryMenu(NetworkDiscoveryCore):
                 break
             elif choice_input == 'm':
                 self.main_menu()
-            else: print('Error')
+            else:
+                print('Error')
             choice_input = input("> ")

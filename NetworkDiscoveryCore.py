@@ -2,26 +2,26 @@ import socket
 import csv
 import os
 
-class NetworkDiscoveryCore:
 
+class NetworkDiscoveryCore:
     def __init__(self):  # Open file for read/write when class define
-        self.file_path = '/home/mile/Documents/ALL_IP.csv'
+        self.file_path = '/home/mile/Documents/ALL_ip.csv'
         if os.path.exists(self.file_path):  # Open file or create
             self.wr_file = open(self.file_path, 'r+', newline='')
         else:
             self.wr_file = open(self.file_path, 'w', newline='')
 
     def input_path(self):
-         self.file_path = input('Input path: ')
-         if os.path.exists(self.file_path):  # Open file or create
+        self.file_path = input('Input path: ')
+        if os.path.exists(self.file_path):  # Open file or create
             print('File exist!')
-         else:
+        else:
             try:
                 self.wr_file = open(self.file_path, 'w', newline='')
             except FileNotFoundError:
                 print('Invalid input, Try again')
 
-    def input_ip(self):  # Input IP range
+    def input_ip(self):  # Input ip range
         self.subnet = input('Input subnet: ') or '192.168.1.'
         print('Using default: ', self.subnet)
         try:
@@ -36,7 +36,7 @@ class NetworkDiscoveryCore:
 
     def perform_net_discovery(self):  # Define network discovery
         self.input_ip()
-        print(self.start_ip, self.stop_ip)
+        #       print(self.start_ip, self.stop_ip)
         for i in range(self.start_ip, self.stop_ip):
             ip = self.subnet + str(i)
             try:
@@ -48,9 +48,9 @@ class NetworkDiscoveryCore:
                 print('Invalid input')
                 break
 
-    def write_csv_file(self, IP):  # Write ip in .csv
+    def write_csv_file(self, ip):  # Write ip in .csv
         writer = csv.writer(self.wr_file, delimiter=' ')
-        ip = str(IP)
+        ip = str(ip)
         format_ip = ip.replace('[', '').replace(']', '').replace("'", ''). \
             replace(' ', '').replace('(', '').replace(')', '').replace(',,', '->')
         writer.writerow(format_ip)
@@ -62,8 +62,9 @@ class NetworkDiscoveryCore:
         for row in reader:
             print(row)
 
-    def print_localhost_ip(self):  # Print localhost ip and Hostname
-        print('This Pc IP:')
+    @staticmethod
+    def print_localhost_ip():  # Print localhost ip and Hostname
+        print('This Pc ip:')
         ip1 = socket.gethostbyname(socket.gethostname())
         hostname = socket.getfqdn()
         print(hostname, '', ip1)
