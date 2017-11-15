@@ -36,7 +36,6 @@ class NetworkDiscoveryCore:
 
     def perform_net_discovery(self):  # Define network discovery
         self.input_ip()
-        #       print(self.start_ip, self.stop_ip)
         for i in range(self.start_ip, self.stop_ip):
             ip = self.subnet + str(i)
             try:
@@ -57,10 +56,12 @@ class NetworkDiscoveryCore:
         print(format_ip)
 
     def read_csv_file(self):  # Define read function
+        iplist = []
         re_file = open(self.file_path, 'r')
         reader = csv.reader(re_file)
         for row in reader:
-            print(row)
+            iplist.append(row)
+        return iplist
 
     @staticmethod
     def print_localhost_ip():  # Print localhost ip and Hostname

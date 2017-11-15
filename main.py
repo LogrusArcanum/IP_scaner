@@ -1,5 +1,10 @@
 from NetworkDiscoveryMenu import *
+from NetworkDiscoverySearch import *
 
-net_dis = NetworkDiscoveryMenu()
-net_dis.main_menu()
-net_dis.main_menu_choice()
+
+ntSearch = NetworkDiscoverySearch()
+ntSearch.inputSearch()
+
+#net_dis = NetworkDiscoveryMenu()
+#net_dis.main_menu()
+#net_dis.main_menu_choice()
