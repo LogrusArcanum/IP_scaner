@@ -1,7 +1,8 @@
 from NetworkDiscoveryMenu import *
 from NetworkDiscoverySearch import *
 
-
+#read = NetworkDiscoveryMenu()
+#read.read_csv_file()
 ntSearch = NetworkDiscoverySearch()
 ntSearch.inputSearch()
 

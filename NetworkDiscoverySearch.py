@@ -1,17 +1,18 @@
 from NetworkDiscoveryCore import *
+import re
 
-ntcore = NetworkDiscoveryCore
+ntcore = NetworkDiscoveryCore()
 
 
 class NetworkDiscoverySearch:
     def __init__(self):
-        self.iplist = []
-        self.iplist.append(ntcore.read_csv_file)
-        # print(iplist)
+        self.iplist = ntcore.read_csv_file()
+        self.formated_inp = ntcore.format_input(self.iplist)
+        print(self.formated_inp)
 
     def inputSearch(self):
         inp = input('Input Hostname: ')
-        for item in self.iplist:
-            if inp in self.iplist:
-                print(item)
-                break
+        x = [n for n in self.formated_inp if inp in n]
+        print(x)
+
+

@@ -49,19 +49,26 @@ class NetworkDiscoveryCore:
 
     def write_csv_file(self, ip):  # Write ip in .csv
         writer = csv.writer(self.wr_file, delimiter=' ')
-        ip = str(ip)
-        format_ip = ip.replace('[', '').replace(']', '').replace("'", ''). \
-            replace(' ', '').replace('(', '').replace(')', '').replace(',,', '->')
+        format_ip = self.format_input(ip)
         writer.writerow(format_ip)
         print(format_ip)
+
+############################################
+    def format_input(self, input):
+        input = str(input)
+        format_inp = input.replace('[', '').replace(']', '').replace("'", ''). \
+            replace('(', '').replace(')', '').replace(',,', ' ').replace(' ', '').replace('->', ' ')
+        return format_inp
+############################################
 
     def read_csv_file(self):  # Define read function
         iplist = []
         re_file = open(self.file_path, 'r')
         reader = csv.reader(re_file)
         for row in reader:
-            iplist.append(row)
-        return iplist
+            iplist += row
+        self.close_file()
+        return(iplist)
 
     @staticmethod
     def print_localhost_ip():  # Print localhost ip and Hostname
