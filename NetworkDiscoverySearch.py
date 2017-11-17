@@ -12,4 +12,4 @@ class NetworkDiscoverySearch:
         for item in self.iplist:
             self.formated_inp = ntcore.format_input(item)
             if inp in self.formated_inp:
-                print(self.formated_inp)
+                print(item)
