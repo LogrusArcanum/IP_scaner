@@ -57,7 +57,7 @@ class NetworkDiscoveryCore:
     def format_input(self, input):
         input = str(input)
         format_inp = input.replace('[', '').replace(']', '').replace("'", ''). \
-            replace('(', '').replace(')', '').replace(',,', ' ').replace(' ', '').replace('->', ' ')
+            replace('(', '').replace(')', '').replace(', ,', '-').replace(' ', '').replace('->', ' ')
         return format_inp
 ############################################
 
