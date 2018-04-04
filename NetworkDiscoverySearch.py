@@ -3,7 +3,6 @@ import re
 
 ntcore = NetworkDiscoveryCore()
 
-
 class NetworkDiscoverySearch:
     def __init__(self):
         self.iplist = ntcore.read_csv_file()
