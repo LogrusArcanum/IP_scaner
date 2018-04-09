@@ -9,7 +9,10 @@ class NetworkDiscoveryCore:
         if os.path.exists(self.file_path):  # Open file or create
             self.wr_file = open(self.file_path, 'r+', newline='')
         else:
-            self.wr_file = open(self.file_path, 'w', newline='')
+            try:
+                self.wr_file = open(self.file_path, 'w', newline='')
+            except TypeError:
+                print('invalid keyboard argument')
 
     def input_path(self):
         self.file_path = input('Input path: ')
@@ -53,13 +56,11 @@ class NetworkDiscoveryCore:
         writer.writerow(format_ip)
         print(format_ip)
 
-############################################
     def format_input(self, input):
         input = str(input)
         format_inp = input.replace('[', '').replace(']', '').replace("'", ''). \
             replace('(', '').replace(')', '').replace(', ,', '-').replace(' ', '').replace('->', ' ')
         return format_inp
-############################################
 
     def read_csv_file(self):  # Define read function
         iplist = []
