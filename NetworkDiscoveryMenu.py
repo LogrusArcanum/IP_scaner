@@ -1,6 +1,5 @@
 from NetworkDiscoveryCore import *
 
-
 class NetworkDiscoveryMenu(NetworkDiscoveryCore):
     @staticmethod
     def main_menu():
